@@ -52,7 +52,7 @@ jobs:
           prefix: 'github.com/${{ github.repository }}/'
 
       - name: Go Test
-        if: github.event_name == 'pull_request' || github.ref != 'master'
+        if: github.event_name == 'pull_request'
         run: go test -coverprofile=c.out ./...
 
   build:

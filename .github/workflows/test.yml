@@ -38,11 +38,11 @@ jobs:
         run: make kind
 
       - name: Hack Code Climate and Go Modules
-        if: github.event_name != 'pull_request' && github.ref == 'master'
+        if: github.event_name != 'pull_request'
         run: mkdir -p github.com/mittwald && ln -sf $(pwd) github.com/mittwald/kubernetes-secret-generator
 
       - name: Test & publish code coverage
-        if: github.event_name != 'pull_request' && github.ref == 'master'
+        if: github.event_name != 'pull_request'
         uses: paambaati/codeclimate-action@v2.3.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.codeClimateReporterID }}
